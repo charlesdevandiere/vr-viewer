@@ -1,0 +1,15 @@
+version: 0.0.{build}
+branches:
+  only:
+  - master
+  - develop
+environment:
+  nodejs_version: 8
+install:
+- ps: Install-Product node $env:nodejs_version
+- cmd: npm install
+cache: node_modules
+build_script:
+- cmd: npm run build
+deploy_script:
+- cmd: npm run package:win
