@@ -23,3 +23,6 @@ deploy:
     secure: 6D5J4nCiejquPmmCdVQnH20Ei+5CfUWAthEhV48FNbPMsv4W0uQ9/0SxLmEMSSnV
   artifact: vr-viewer
   prerelease: true
+  on:
+    branch: master
+    appveyor_repo_tag: true
