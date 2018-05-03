@@ -11,17 +11,23 @@ install:
 cache: node_modules
 build_script:
 - cmd: npm run build
-- cmd: npm run package:win
+- cmd: npm run package
 artifacts:
   - path: out/vr-viewer-win32-ia32
-    name: vr-viewer
+    name: vr-viewer-win32-ia32
+    type: zip
+  - path: out/vr-viewer-linux-x64
+    name: vr-viewer-linux-x64
+    type: zip
+  - path: out/vr-viewer-darwin-x64
+    name: vr-viewer-darwin-x64
     type: zip
 deploy:
   release: vr-viewer-v$(appveyor_build_version)
   provider: GitHub
   auth_token:
     secure: 6D5J4nCiejquPmmCdVQnH20Ei+5CfUWAthEhV48FNbPMsv4W0uQ9/0SxLmEMSSnV
-  artifact: vr-viewer
+  artifact: vr-viewer-win32-ia32,vr-viewer-linux-x64,vr-viewer-darwin-x64
   prerelease: true
   on:
     branch: master
