@@ -13,3 +13,7 @@ build_script:
 - cmd: npm run build
 deploy_script:
 - cmd: npm run package:win
+artifacts:
+  - path: out
+    name: vr-viewer
+    type: zip
