@@ -1,0 +1,6 @@
+<button (click)="onClick()">
+    <div class="btn-content" tabindex="-1">
+        <i [class]="icon" [hidden]="!icon"></i>
+        <span #text [class.margin]="icon && text.innerHTML.length > 0"><ng-content></ng-content></span>
+    </div>
+</button>
