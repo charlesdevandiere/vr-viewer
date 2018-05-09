@@ -1,0 +1,50 @@
+@import "./variables.scss";
+@font-face {
+    font-family: 'Roboto';
+    src: url(./assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+    user-select: none;
+    cursor: default;
+    outline: none;
+}
+
+body {
+    background-color: $background-color;
+    color: $transparent-white;
+    font-family: 'Roboto';
+    font-size: 12px;
+}
+
+h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+// scrollbar
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $darken;
+    border-left: .5px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
