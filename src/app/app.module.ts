@@ -9,6 +9,7 @@ import { NavButtonComponent } from './controls/nav-button/nav-button.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { CollectionViewComponent } from './collection-view/collection-view.component';
 import { AlbumsViewComponent } from './albums-view/albums-view.component';
+import { TranslatePipe } from './utiles/i18n/translate.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AlbumsViewComponent } from './albums-view/albums-view.component';
         MainViewComponent,
         NavButtonComponent,
         CollectionViewComponent,
-        AlbumsViewComponent
+        AlbumsViewComponent,
+        TranslatePipe
     ],
     imports: [
         BrowserModule,
