@@ -1,8 +1,12 @@
-version: 0.0.{build}
+image: Visual Studio 2017
+init: 
+  - ps: $env:package_version = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version
+version: $(package_version)-{build}
 branches:
   only:
   - master
   - develop
+  - alm
 environment:
   nodejs_version: 8
 install:
@@ -12,17 +16,8 @@ cache: node_modules
 build_script:
 - cmd: npm run build
 - cmd: npm run package:win
+- cmd: signtool sign /v /f cert.pfx /t http://timestamp.verisign.com/scripts/timstamp.dll out\vr-viewer-win32-ia32\vr-viewer.exe
 artifacts:
   - path: out/vr-viewer-win32-ia32
     name: vr-viewer
     type: zip
-deploy:
-  release: vr-viewer-v$(appveyor_build_version)
-  provider: GitHub
-  auth_token:
-    secure: 6D5J4nCiejquPmmCdVQnH20Ei+5CfUWAthEhV48FNbPMsv4W0uQ9/0SxLmEMSSnV
-  artifact: vr-viewer
-  prerelease: true
-  on:
-    branch: master
-    appveyor_repo_tag: true
