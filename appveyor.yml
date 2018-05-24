@@ -1,7 +1,5 @@
 image: Visual Studio 2017
-init: 
-  - ps: $env:package_version = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version
-version: $(package_version)-{build}
+version: 0.0.{build}
 branches:
   only:
   - master
@@ -10,13 +8,15 @@ branches:
 environment:
   nodejs_version: 8
 install:
+- ps: $env:package_version = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version 
+- ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
 - ps: Install-Product node $env:nodejs_version
 - cmd: npm install
 cache: node_modules
 build_script:
 - cmd: npm run build
 - cmd: npm run package:win
-- cmd: signtool sign /v /f cert.pfx /t http://timestamp.verisign.com/scripts/timstamp.dll out\vr-viewer-win32-ia32\vr-viewer.exe
+- cmd: C:\Program Files (x86)\Windows Kits\10\bin\10.0.10586.0\x86\signtool.exe sign /v /f cert.pfx /t http://timestamp.verisign.com/scripts/timstamp.dll out\vr-viewer-win32-ia32\vr-viewer.exe
 artifacts:
   - path: out/vr-viewer-win32-ia32
     name: vr-viewer
