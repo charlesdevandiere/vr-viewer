@@ -16,7 +16,11 @@ build_script:
 - cmd: npm run build
 - cmd: npm run package:win
 - cmd: "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool.exe" sign /v /f cert.pfx /t http://timestamp.verisign.com/scripts/timstamp.dll out\vr-viewer-win32-ia32\vr-viewer.exe
+- cmd: "C:\Program Files (x86)\Inno Setup 5\ISCC.exe" .\installer.iss
+- cmd: "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool.exe" sign /v /f cert.pfx /t http://timestamp.verisign.com/scripts/timstamp.dll out\windows-installer\setup.exe
 artifacts:
   - path: out/vr-viewer-win32-ia32
-    name: vr-viewer
+    name: vr-viewer-win32-ia32
     type: zip
+  - path: out/windows-installer/setup.exe
+    name: setup
