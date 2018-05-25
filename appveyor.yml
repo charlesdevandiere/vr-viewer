@@ -3,26 +3,27 @@ branches:
   only:
   - master
   - develop
+  - alm
 environment:
   nodejs_version: 8
+cache: node_modules
 install:
+- ps: $env:package_version = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version 
+- ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
 - ps: Install-Product node $env:nodejs_version
 - cmd: npm install
-cache: node_modules
 build_script:
+- cmd: set PATH=%PATH%;"C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1A\\Bin"
+- cmd: set PATH=%PATH%;"C:\\Program Files (x86)\\Inno Setup 5"
+- cmd: npm run test
 - cmd: npm run build
-- cmd: npm run package:win
+- cmd: npm run package:windows
+- cmd: signtool sign /v /f cert.pfx /t http://timestamp.verisign.com/scripts/timstamp.dll out\vr-viewer-win32-ia32\vr-viewer.exe
+- cmd: iscc .\installer.iss
+- cmd: signtool sign /v /f cert.pfx /t http://timestamp.verisign.com/scripts/timstamp.dll out\windows-installer\setup.exe
 artifacts:
   - path: out/vr-viewer-win32-ia32
-    name: vr-viewer
+    name: vr-viewer-win32-ia32
     type: zip
-deploy:
-  release: vr-viewer-v$(appveyor_build_version)
-  provider: GitHub
-  auth_token:
-    secure: 6D5J4nCiejquPmmCdVQnH20Ei+5CfUWAthEhV48FNbPMsv4W0uQ9/0SxLmEMSSnV
-  artifact: vr-viewer
-  prerelease: true
-  on:
-    branch: master
-    appveyor_repo_tag: true
+  - path: out/windows-installer/setup.exe
+    name: setup
