@@ -6,12 +6,11 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod",
-    "test": "ng test --browsers PhantomJS",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "ng build && electron .",
     "electron-aot": "ng build --prod && electron .",
-    "package": "npm-run-all package:*",
     "package:windows": "electron-packager . --ignore=src --ignore=node_modules --overwrite --platform=win32 --arch=ia32 --out=out",
     "package:linux": "electron-packager . --ignore=src --ignore=node_modules --overwrite --platform=linux --arch=x64 --out=out",
     "package:macos": "electron-packager . --ignore=src --ignore=node_modules --overwrite --platform=darwin --arch=x64 --out=out"
@@ -50,8 +49,6 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "npm-run-all": "^4.1.2",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
