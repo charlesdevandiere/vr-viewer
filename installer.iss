@@ -21,10 +21,10 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=E:\vr-viewer\LICENSE
-OutputDir=E:\vr-viewer\out\windows-installer
+LicenseFile=LICENSE
+OutputDir=out\windows-installer
 OutputBaseFilename=setup
-SetupIconFile=E:\vr-viewer\src\favicon.ico
+SetupIconFile=src\favicon.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -36,8 +36,8 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "E:\vr-viewer\out\vr-viewer-win32-ia32\vr-viewer.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\vr-viewer\out\vr-viewer-win32-ia32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "out\vr-viewer-win32-ia32\vr-viewer.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "out\vr-viewer-win32-ia32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
