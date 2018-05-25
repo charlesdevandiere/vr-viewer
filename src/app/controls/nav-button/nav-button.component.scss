@@ -1,0 +1,25 @@
+@import "../../../styles/variables.scss";
+button {
+    color: $transparent-white;
+    &>.btn-content {
+        border-radius: 18px;
+        padding: 10px;
+        &>h3 {
+            border-bottom: 2px solid transparent;
+        }
+    }
+    &.active>.btn-content>h3 {
+        border-bottom-color: $blue;
+        color: $blue;
+    }
+    &:hover,
+    &:active {
+        &>.btn-content {
+            color: white;
+        }
+        &.active>.btn-content>h3 {
+            border-bottom-color: white;
+            color: white;
+        }
+    }
+}

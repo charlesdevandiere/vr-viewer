@@ -1,0 +1,23 @@
+@import "./variables.scss";
+a {
+    color: $link-foreground;
+    text-decoration: none;
+}
+
+button {
+    appearance: none;
+    background: none;
+    border: none;
+    
+    .btn-content {
+        border: 1px solid transparent;
+    }
+    &:focus>.btn-content {
+        border-color: $blue;
+        box-shadow: 0 0 8px 0 $blue;
+    }
+    &:focus,
+    &>.btn-content:focus {
+        outline: none;
+    }
+}
