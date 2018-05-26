@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgxElectronModule } from 'ngx-electron';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { CollectionViewComponent } from './collection-view/collection-view.component';
 import { AlbumsViewComponent } from './albums-view/albums-view.component';
 import { TranslatePipe } from './utiles/i18n/translate.pipe';
+import { VrViewerComponent } from './vr-viewer/vr-viewer.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TranslatePipe } from './utiles/i18n/translate.pipe';
         NavButtonComponent,
         CollectionViewComponent,
         AlbumsViewComponent,
-        TranslatePipe
+        TranslatePipe,
+        VrViewerComponent
     ],
     imports: [
         BrowserModule,
@@ -28,6 +30,7 @@ import { TranslatePipe } from './utiles/i18n/translate.pipe';
         AppRoutingModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
